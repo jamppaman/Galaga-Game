@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public int enemyAmount = 5;
+    public int enemyPerRow = 5;
     public int enemySpacing = 7;
     public GameObject enemyPrefab;
     public List<GameObject> enemyList = new List<GameObject>();
@@ -16,11 +17,22 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < enemyAmount; i++)
+        int enemySpawned = 0;
+        int enemyCurrentRow = 0;
+        while(enemySpawned < enemyAmount)
         {
-            GameObject spawnedEnemy = Instantiate(enemyPrefab, this.transform);
-            spawnedEnemy.transform.position = new Vector3(enemySpacing * i, 31, 0);
-            enemyList.Add(spawnedEnemy);
+            for (int i = 0; i < enemyPerRow; i++)
+            {
+                GameObject spawnedEnemy = Instantiate(enemyPrefab, this.transform);
+                spawnedEnemy.transform.position = new Vector3(enemySpacing * i, 31 + enemyCurrentRow, 0);
+                enemyList.Add(spawnedEnemy);
+                enemySpawned++;
+                if(enemySpawned >= enemyAmount)
+                {
+                    break;
+                }
+            }
+            enemyCurrentRow = enemyCurrentRow - 5;
         }
     }
 

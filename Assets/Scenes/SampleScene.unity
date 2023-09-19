@@ -388,7 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b9e2b857c5674478ff9bfb493188f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAmount: 5
+  enemyAmount: 17
+  enemyPerRow: 5
   enemySpacing: 7
   enemyPrefab: {fileID: 6757159326333849421, guid: cce53d9e6f818a2418002c50c3dad73c, type: 3}
   enemyList: []
@@ -829,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c043e9b87fc03647a5a7a8a6a86e26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitButton: {fileID: 0}
+  quitButton: {fileID: 973363936}
 --- !u!4 &1312258561
 Transform:
   m_ObjectHideFlags: 0

@@ -6,9 +6,14 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 10f;
     public float lifeTime = 5f;
+    public bool firedByPlayer = true;
+
     void Start()
     {
-        
+        if (firedByPlayer == false)
+        {
+            bulletSpeed = bulletSpeed * -1f;
+        }
     }
 
     void FixedUpdate()
@@ -24,10 +29,12 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet() 
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        Player playerValues = playerObject.GetComponent<Player>();
-        playerValues.usedAmmo--;
-
+        if (firedByPlayer == true)
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            Player playerValues = playerObject.GetComponent<Player>();
+            playerValues.usedAmmo--;
+        }
         Destroy(this.gameObject);
     }
 
