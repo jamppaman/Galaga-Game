@@ -152,6 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b9e2b857c5674478ff9bfb493188f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAmount: 5
+  enemySpacing: 7
+  enemyPrefab: {fileID: 6757159326333849421, guid: cce53d9e6f818a2418002c50c3dad73c, type: 3}
+  enemyList: []
+  enemySpeed: 15
+  enemySide: 0
+  boundary: 35
 --- !u!4 &570461675
 Transform:
   m_ObjectHideFlags: 0
