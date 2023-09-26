@@ -395,7 +395,7 @@ MonoBehaviour:
   enemyList: []
   enemySpeed: 15
   enemySide: 0
-  boundary: 35
+  boundary: 57
 --- !u!4 &570461675
 Transform:
   m_ObjectHideFlags: 0
@@ -947,10 +947,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974c841f2882e2441ad78bdfe9e4089a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  playerSpeed: 20
   playerAmmo: 2
   usedAmmo: 0
   bullet: {fileID: 6975486340300193673, guid: 1cfd2d1dee6a797438d02261857abc72, type: 3}
+  eManager: {fileID: 570461673}
 --- !u!54 &1599547165
 Rigidbody:
   m_ObjectHideFlags: 0

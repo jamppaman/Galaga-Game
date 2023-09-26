@@ -9,7 +9,13 @@ public class Player : MonoBehaviour
     public int usedAmmo = 0;
 
     public GameObject bullet;
+    public GameObject eManager;
+    private EnemyManager managerVal;
 
+    void Start()
+    {
+       managerVal = eManager.GetComponent<EnemyManager>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -20,11 +26,11 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // Movement inputs
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.LeftArrow) && this.transform.position.x > -managerVal.boundary|| Input.GetKey(KeyCode.A) && this.transform.position.x > -managerVal.boundary)
         {
             transform.Translate(Vector3.left * playerSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.RightArrow) && this.transform.position.x < managerVal.boundary || Input.GetKey(KeyCode.D) && this.transform.position.x < managerVal.boundary)
         {
             transform.Translate(Vector3.right * playerSpeed * Time.deltaTime);
         }

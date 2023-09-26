@@ -27,6 +27,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy" && firedByPlayer == true)
+        {
+            Enemy target = other.gameObject.GetComponent<Enemy>();
+            //target.Die();
+            DestroyBullet();
+        }
+        if (other.gameObject.tag == "Player" && firedByPlayer == false)
+        {
+            Player target = other.gameObject.GetComponent<Player>();
+            //target.PlayerDie();
+            DestroyBullet();
+        }
+    }
     void DestroyBullet() 
     {
         if (firedByPlayer == true)
