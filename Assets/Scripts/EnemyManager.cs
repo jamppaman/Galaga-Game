@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    // Spawn Variables
     public int enemyAmount = 5;
     public int enemyPerRow = 5;
     public int enemySpacing = 7;
     public GameObject enemyPrefab;
     public List<GameObject> enemyList = new List<GameObject>();
 
+    // Move Variables
     public float enemySpeed = 15f;
     public bool enemySide = false;
     private float sideMultiplier = 1f;
     public int boundary = 35;
 
+    // Shooting Variables
+    public float currentCooldown = 2f;
+    public bool inCooldown = false;
+    public int enemyAmmoPool = 3;
     void Start()
     {
+        currentCooldown = 2f;
+        inCooldown = false;
+        enemyAmmoPool = 3;
+
         int enemySpawned = 0;
         int enemyCurrentRow = 0;
         while(enemySpawned < enemyAmount)
@@ -47,6 +57,13 @@ public class EnemyManager : MonoBehaviour
         foreach (GameObject moveEnemy in enemyList)
         {
             moveEnemy.transform.Translate(Vector3.left * enemySpeed * sideMultiplier * Time.deltaTime);
+        }
+
+        currentCooldown -= Time.deltaTime;
+        if(inCooldown == true)
+        {
+            currentCooldown += 0.2f;
+            inCooldown = false;
         }
     }
 
