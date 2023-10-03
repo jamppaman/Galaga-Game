@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Player" && firedByPlayer == false)
         {
             Player target = other.gameObject.GetComponent<Player>();
-            //target.PlayerDie();
+            target.PlayerDie();
             DestroyBullet();
         }
     }

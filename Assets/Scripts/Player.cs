@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -44,5 +45,10 @@ public class Player : MonoBehaviour
             Instantiate(bullet, new Vector3(firePosition.position.x, firePosition.position.y, firePosition.position.z), firePosition.rotation);
             usedAmmo++;
         }
+    }
+
+    public void PlayerDie()
+    {
+        SceneManager.LoadScene(sceneName: "Main Menu");
     }
 }

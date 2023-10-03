@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     public GameObject enemyBullet;
-
     public EnemyManager enemyManager;
     public GameObject playerTarget;
+
+    // Assault Variablet
+    public Vector3 currentPosition;
+    public Vector3 returnPosition;
+    public bool assaulting = false;
     void Start()
     {
         enemyManager = GetComponentInParent<EnemyManager>();
@@ -25,12 +29,10 @@ public class Enemy : MonoBehaviour
 
     void CheckDistance()
     {
-        Debug.Log("tarkistetaan etaisyys");
         Vector2 playerPosX = new Vector2(playerTarget.transform.position.x, 0);
         Vector2 enemyPosX = new Vector2(this.transform.position.x, 0);
         if(Vector2.Distance(playerPosX, enemyPosX) < 0.003f)
         {
-            Debug.Log("etaisyys oikea");
             EnemyFiring();
         }
     }
@@ -39,7 +41,6 @@ public class Enemy : MonoBehaviour
         bool allowedToFire = ReloadCheck();
         if(allowedToFire == true)
         {
-            Debug.Log("lupa ampua");
             Transform firePosition = this.transform;
             Instantiate(enemyBullet, new Vector3(firePosition.position.x, firePosition.position.y, firePosition.position.z), firePosition.rotation);
             enemyManager.enemyAmmoPool--;

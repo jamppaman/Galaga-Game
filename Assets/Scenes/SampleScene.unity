@@ -389,13 +389,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 17
-  enemyPerRow: 5
+  enemyPerRow: 4
   enemySpacing: 7
+  extendingRows: 1
+  fillTillFull: 0
   enemyPrefab: {fileID: 6757159326333849421, guid: cce53d9e6f818a2418002c50c3dad73c, type: 3}
   enemyList: []
   enemySpeed: 15
   enemySide: 0
   boundary: 57
+  assaultInProgress: 0
+  assaultTimer: 0
+  assaultSpeed: 15
+  timeToReturn: 0
+  currentCooldown: 2
+  inCooldown: 0
+  enemyAmmoPool: 3
 --- !u!4 &570461675
 Transform:
   m_ObjectHideFlags: 0
