@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     // Assault variables
     public bool assaultInProgress = false;
     public float assaultTimer;
-    public float assaultSpeed = 15f;
+    public float assaultSpeed = 5f;
     private int picker = 0;
     public bool timeToReturn = false;
     private Enemy iAmAttacking = null;
@@ -75,7 +75,6 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Going down");
                 AssaultMover(moveEnemy);
             }
         }
@@ -90,7 +89,6 @@ public class EnemyManager : MonoBehaviour
         attacker.returnPosition = new Vector3(attacker.currentPosition.x, attacker.currentPosition.y, attacker.currentPosition.z);
         attacker.assaulting = true;
         timeToReturn = false;
-        Debug.Log("Starting assault");
         return attacker;
     }
 
@@ -103,7 +101,6 @@ public class EnemyManager : MonoBehaviour
         {
             if (attackerVal.currentPosition.y < -9f)
             {
-                Debug.Log("I am making my move");
                 attackerVal.currentPosition.y = 40f;
                 Debug.Log(enemyList.Count);
                 if (enemyList.Count > 1)
@@ -120,21 +117,20 @@ public class EnemyManager : MonoBehaviour
             attackerVal.currentPosition.x = Mathf.Sin(attackerVal.currentPosition.y)* 10f;
             // Kommentti loppuu tähän
             // attackerVal.currentPosition = pather.AssaultPattern(attackerE);
-            //attackerE.transform.position = attackerVal.currentPosition; // <-- TÄSSÄ OLI SE LIIKE ONGELMA KOMMENTIT POIS
+            attackerE.transform.position = attackerVal.currentPosition;
         }
         else
         {
-            float step = assaultSpeed * Time.deltaTime;
+            float step = assaultSpeed * 2 * Time.deltaTime;
             attackerE.transform.position = Vector3.MoveTowards(attackerVal.currentPosition,
                 attackerVal.returnPosition, step);
-            float dis = Vector2.Distance(attackerVal.currentPosition , attackerVal.returnPosition);
+            float dis = Vector3.Distance(attackerVal.currentPosition , attackerVal.returnPosition);
             if (dis < 0.2f) 
             {
                 attackerVal.assaulting = false;
                 assaultInProgress = false;
                 assaultTimer = Random.Range(0.5f, 1.8f);
                 attackerE.transform.position = attackerVal.returnPosition;
-                Debug.Log("I have returned");
             }
         }
         attackerVal.returnPosition = attackerVal.returnPosition + 
